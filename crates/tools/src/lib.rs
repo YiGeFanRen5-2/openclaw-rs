@@ -431,6 +431,9 @@ pub fn register_builtin_tools(registry: &mut ToolRegistry) {
     registry.register(EditFileTool::new());
     registry.register(HttpRequestTool::new());
     registry.register(FileInfoTool::new());
+    // Multimodal image tools
+    registry.register(ImageInfoTool);
+    registry.register(ImageFormatsTool);
 }
 
 /// List Files Tool
@@ -1052,6 +1055,10 @@ impl Tool for HttpRequestTool {
 // ==================== File Info Tool ====================
 mod file_info;
 pub use file_info::FileInfoTool;
+
+// ==================== Image Tools (Multimodal) ====================
+mod image_tools;
+pub use image_tools::{ImageInfoTool, ImageFormatsTool};
 
 // ==================== Phase 11: Benchmarks & Tests ====================
 
