@@ -170,7 +170,7 @@ fn parse_jpeg_dimensions(header: &[u8]) -> Result<(u32, u32), crate::ToolError> 
         }
         let marker = header[i + 1];
         // SOF0, SOF1, SOF2 markers contain dimensions
-        if matches!(marker, 0xC0 | 0xC1 | 0xC2) && i + 9 <= header.len() {
+        if matches!(marker, 0xC0..=0xC2) && i + 9 <= header.len() {
             let height = ((header[i + 5] as u32) << 8) | (header[i + 6] as u32);
             let width = ((header[i + 7] as u32) << 8) | (header[i + 8] as u32);
             return Ok((width, height));

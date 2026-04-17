@@ -33,6 +33,12 @@ pub struct Histogram {
     pub buckets: HashMap<usize, usize>, // bucket -> count
 }
 
+impl Default for MetricsCollector {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl MetricsCollector {
     pub fn new() -> Self {
         Self { counters: Arc::new(RwLock::new(HashMap::new())), gauges: Arc::new(RwLock::new(HashMap::new())), histograms: Arc::new(RwLock::new(HashMap::new())), start_time: Instant::now() }
