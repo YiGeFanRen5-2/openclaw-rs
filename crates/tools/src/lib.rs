@@ -434,6 +434,9 @@ pub fn register_builtin_tools(registry: &mut ToolRegistry) {
     // Multimodal image tools
     registry.register(ImageInfoTool);
     registry.register(ImageFormatsTool);
+    // Health check tools
+    registry.register(HealthCheckTool);
+    registry.register(BatchHealthCheckTool);
 }
 
 /// List Files Tool
@@ -1059,6 +1062,10 @@ pub use file_info::FileInfoTool;
 // ==================== Image Tools (Multimodal) ====================
 mod image_tools;
 pub use image_tools::{ImageInfoTool, ImageFormatsTool};
+
+// ==================== Health Check Tools ====================
+mod health_tools;
+pub use health_tools::{HealthCheckTool, BatchHealthCheckTool};
 
 // ==================== Phase 11: Benchmarks & Tests ====================
 

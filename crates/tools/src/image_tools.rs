@@ -112,7 +112,6 @@ impl Tool for ImageInfoTool {
         let mut header = vec![0u8; 32];
         let mut file = std::fs::File::open(path)
             .map_err(|e| crate::ToolError::ExecutionFailed(format!("Cannot open file: {}", e)))?;
-        use std::io::Read;
         std::io::Read::read_exact(&mut file, &mut header)
             .map_err(|e| crate::ToolError::ExecutionFailed(format!("Cannot read file: {}", e)))?;
 
