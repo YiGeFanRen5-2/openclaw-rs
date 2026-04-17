@@ -444,6 +444,11 @@ pub fn register_builtin_tools(registry: &mut ToolRegistry) {
     registry.register(JsonStoreSetTool);
     registry.register(JsonStoreGetTool);
     registry.register(JsonStoreListTool);
+    // Text processing tools
+    registry.register(HashTool);
+    registry.register(UuidTool);
+    registry.register(RandomStringTool);
+    registry.register(TextStatsTool);
 }
 
 /// List Files Tool
@@ -1081,6 +1086,10 @@ pub use validator::{ValidateJsonTool, ValidateToolInputTool};
 // ==================== JSON Store Tools ====================
 mod json_store;
 pub use json_store::{JsonStoreSetTool, JsonStoreGetTool, JsonStoreListTool};
+
+// ==================== Text Processing Tools ====================
+mod text_tools;
+pub use text_tools::{HashTool, UuidTool, RandomStringTool, TextStatsTool};
 
 // ==================== Phase 11: Benchmarks & Tests ====================
 

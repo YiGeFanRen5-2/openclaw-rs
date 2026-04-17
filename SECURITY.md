@@ -1,73 +1,124 @@
 # Security Policy
 
-## Supported Versions
+## Reporting Security Issues
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 0.2.x   | ✅ Yes - Production |
-| < 0.2.0 | ⚠️  Use at own risk |
+If you discover a security vulnerability, please report it by:
+- Opening a private security advisory on GitHub
+- Or contacting the maintainers directly
 
-## Reporting a Vulnerability
+**DO NOT** create public issues for security vulnerabilities.
 
-If you discover a security vulnerability within OpenClaw Rust Workspace, please report it responsibly:
+## Security Model
 
-1. **Do NOT** open a public GitHub issue for security vulnerabilities.
-2. Email the maintainers directly or use GitHub's private vulnerability reporting.
-3. Include a detailed description and steps to reproduce.
-4. Allow 48 hours for initial response.
+OpenClaw implements a multi-layer security model:
 
-## Sandbox Security
+### 1. Permission System
 
-The tool execution sandbox (`tools` crate) uses Linux namespaces and seccomp for isolation:
+Every tool declares its required permissions:
 
-```text
-CLONE_NEWNS   - Mount namespace isolation
-CLONE_NEWPID  - Process isolation
-CLONE_NEWUTS  - Hostname isolation
-CLONE_NEWIPC   - IPC isolation
-CLONE_NEWNET   - Network isolation (denied by default)
-```
-
-Resource limits enforced:
-- Memory: 512MB per tool execution
-- CPU time: 30s hard limit
-- File size: 10MB per write
-- Open files: 1024
-
-Seccomp deny list includes:
-```text
-ptrace, mount, pivot_root, unshare, setns,
-reboot, kexec_load, init_module, finit_module,
-syslog, lookup_dcookie, perf_event_open,
+```rust
+fn permission(&self) -> Permission {
+    Permission::Safe  // No restrictions
+    // OR
+    Permission::Filesystem {
+        allowlist: vec!["/tmp".into()],
+        writable: false,
+    }
+    // OR
+    Permission::Network {
+        destinations: vec!["api.example.com".into()],
+        protocols: vec!["https".into()],
+        max_connections: 10,
+    }
 }
 ```
 
-## Tool Permissions
+### 2. Permission Types
 
-Tools require explicit permission levels:
-
-| Permission | Allowed Operations |
-|-----------|------------------|
+| Type | Description |
+|------|-------------|
 | `Safe` | No restrictions |
-| `Filesystem { allowlist }` | Only paths in allowlist |
-| `Shell { allowlist }` | Only commands in allowlist |
-| `Network { allowlist }` | Only targets in allowlist |
-| `Custom` | Custom validation |
+| `Filesystem` | Access to specific paths only |
+| `Shell` | Execution of allowed commands only |
+| `Network` | Access to specific destinations only |
+| `Custom` | Custom permission checker |
 
-## Plugin Hot-Reload
+### 3. Sandbox Execution
 
-Dynamically loaded `.so` plugins are executed in the same process. Only load plugins from trusted sources. Use `PluginLoader::discover()` with a controlled `base_dir`.
+Tools can be executed in isolated sandboxes:
 
-## Node.js API Security
+```rust
+SandboxConfig {
+    namespaces: vec![
+        CLONE_NEWNS,  // Mount namespace
+        NEWPID,       // PID namespace
+        NEWNET,       // Network namespace
+    ],
+    limits: ResourceLimits {
+        max_memory: 512 * 1024 * 1024,  // 512MB
+        max_cpu_time: 30,                 // 30 seconds
+        max_file_size: 10 * 1024 * 1024, // 10MB
+        max_open_files: 1024,
+    },
+    seccomp: vec![
+        // Block dangerous syscalls
+        SYS_ptrace,
+        SYS_mount,
+        SYS_pivot_root,
+        SYS_unshare,
+        SYS_setns,
+        SYS_reboot,
+    ],
+}
+```
 
-When exposing `OpenClawRuntime` over network, ensure:
-- API key authentication for provider access
-- Session isolation between users
-- Rate limiting on `execute_tool()` calls
-- Allowlist-only tool permissions
+## Best Practices
 
-## Known Limitations
+### For Tool Developers
 
-- Plugin hot-reload runs plugins in-process (no process isolation yet)
-- Anthropic function/tool calling not yet implemented
-- MCP client streaming not yet implemented
+1. **Minimize Permissions**: Request only what's needed
+2. **Validate Input**: Always validate tool inputs
+3. **Sanitize Output**: Escape sensitive data in responses
+4. **Log Actions**: Record security-relevant events
+
+### For Deployment
+
+1. **Run as Non-Root**: Use dedicated service accounts
+2. **Limit Resources**: Configure appropriate limits
+3. **Network Isolation**: Use firewall rules for production
+4. **Monitor Logs**: Watch for permission denied events
+
+## Security Checklist
+
+Before deploying OpenClaw:
+
+- [ ] Review all tool permissions
+- [ ] Configure firewall rules
+- [ ] Set up resource limits
+- [ ] Enable audit logging
+- [ ] Use environment variables for secrets
+- [ ] Run as non-root user
+- [ ] Regular security updates
+
+## Incident Response
+
+If a security incident occurs:
+
+1. **Contain**: Isolate affected components
+2. **Assess**: Determine scope and impact
+3. **Remediate**: Apply fixes
+4. **Report**: Document and notify users
+5. **Recover**: Restore normal operations
+
+## CVEs and Security Updates
+
+Security updates are prioritized and released immediately.
+Check the [CHANGELOG](CHANGELOG.md) for security-related changes.
+
+## Version Support
+
+| Version | Supported | Notes |
+|---------|-----------|-------|
+| 0.2.x | ✅ Yes | Current stable |
+| 0.1.x | ⚠️ Limited | Security fixes only |
+| < 0.1 | ❌ No | Upgrade recommended |

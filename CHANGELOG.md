@@ -110,3 +110,90 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `image_formats` tool - List supported image formats
 - Supported formats: JPEG, PNG, GIF, BMP, WEBP
 - Pure Rust implementation, no heavy dependencies
+
+## [0.2.2] - 2026-04-17
+
+### Added
+
+#### Phase 31: Multimodal Image Tools
+- `image_info` - Get image dimensions, format, file size
+- `image_formats` - List supported image formats
+- Pure Rust implementation, no heavy dependencies
+- Supports JPEG, PNG, GIF, BMP, WEBP
+
+#### Phase 32: Release v0.2.2
+- GitHub Release published
+
+## [0.3.0] - 2026-04-17
+
+### Added
+
+#### Phase 33: Plugin Registry
+- `PluginRegistry` - Plugin discovery and validation
+- Semantic version validation and compatibility checking
+- Manifest validation (tool/resource names)
+- Example plugin manifest in `examples/plugins/`
+
+#### Phase 34: Observability & Metrics
+- `MetricsCollector` - OpenTelemetry-style metrics
+- Counters, Gauges, Histograms support
+- Prometheus format export
+- Predefined metrics for sessions, tools, messages
+
+#### Phase 36: Health Check Tools
+- `health_check` - Single URL health check
+- `batch_health_check` - Multiple URLs in one call
+- Response time measurement
+
+#### Phase 37: JSON Schema Validation
+- `validate_json` - Validate JSON against Schema
+- `validate_tool_input` - Tool input validation
+- Supports: type, required, enum, min/max, pattern
+
+#### Phase 41: JSON Store Tools
+- `json_store_set` - Store JSON by key
+- `json_store_get` - Retrieve JSON by key
+- `json_store_list` - List all keys
+- No external dependencies required
+
+#### Phase 42: Text Processing Tools
+- `hash` - String hashing
+- `uuid` - UUID generation
+- `random_string` - Random string generator
+- `text_stats` - Text statistics (chars, words, lines)
+
+#### Phase 43: Examples & Documentation
+- `example_05_complete_workflow.rs` - Complete workflow example
+- `example_06_mcp_client.rs` - MCP client example
+- `examples/plugins/example-tool/` - Plugin example
+- `examples/README.md` - Examples documentation
+
+#### Phase 44: Docker & Deployment
+- `Dockerfile.mcp` - Minimal MCP server image
+- `Dockerfile.dev` - Development environment
+- `.dockerignore` - Build optimization
+- Enhanced `docker-compose.yml`
+
+#### Phase 45: Security & Documentation
+- `SECURITY.md` - Security policy
+- `CLAUDE.md` - Claude Code integration guide
+
+#### Phase 46: Performance & Optimization
+- `PERFORMANCE.md` - Performance optimization guide
+- Clippy warnings fixed
+- Redundant code removed
+
+### Changed
+
+- MCP server now exposes 19 built-in tools
+- Enhanced CI/CD with mkdocs build
+- Improved README structure
+
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Built-in tools | 19 |
+| Unit tests | 77+ |
+| Documentation files | 16+ |
+| Dockerfiles | 3 |

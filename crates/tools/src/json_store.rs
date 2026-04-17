@@ -1,7 +1,7 @@
 //! JSON Store Tool - Simple key-value JSON storage
 
 use crate::{Permission, Tool, ToolSchema};
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 use std::collections::HashMap;
 use std::fs;
 use std::path::PathBuf;
@@ -113,7 +113,7 @@ impl Tool for JsonStoreSetTool {
         // For demo, use in-memory store
         let store = JsonStore::new();
         store.set(&input.key, input.value)
-            .map_err(|e| crate::ToolError::ExecutionFailed(e))?;
+            .map_err(crate::ToolError::ExecutionFailed)?;
 
         Ok(serde_json::json!({
             "success": true,

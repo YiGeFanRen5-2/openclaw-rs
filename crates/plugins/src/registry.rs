@@ -61,11 +61,7 @@ impl PluginRegistry {
         let manifest: super::PluginManifest = serde_json::from_str(&content)
             .map_err(|e| RegistryError::InvalidManifest(format!("Invalid JSON: {}", e)))?;
 
-        let source = if path.is_absolute() {
-            PluginSource::Local
-        } else {
-            PluginSource::Local
-        };
+        let source = PluginSource::Local;
 
         self.register(manifest, source)
     }

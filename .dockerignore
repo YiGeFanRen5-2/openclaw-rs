@@ -1,0 +1,40 @@
+# Git
+.git
+.gitignore
+
+# Build artifacts
+target/
+*.o
+*.rlib
+*.so
+*.dylib
+*.node
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docs (we build separately)
+docs/
+target/doc/
+
+# Tests
+**/tests/
+**/*.test
+*.tmp
+
+# Temporary
+tmp/
+temp/
+*.log
+
+# Node (not needed in container)
+node_modules/
+*.log
+.env.local

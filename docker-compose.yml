@@ -17,3 +17,26 @@ services:
       - OPENCLAW_BASE_URL=${OPENCLAW_BASE_URL}
     # CLI args override entrypoint
     command: ["status"]
+
+  mcp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: openclaw/mcp-server:latest
+    environment:
+      - OPENCLAW_API_KEY=${OPENCLAW_API_KEY}
+    # MCP server runs stdio
+    stdin_open: true
+    tty: true
+    command: []
+
+  # Development environment with all tools
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/workspace
+    environment:
+      - OPENCLAW_API_KEY=${OPENCLAW_API_KEY}
+    command: sleep infinity

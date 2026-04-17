@@ -1,6 +1,6 @@
 use clap::{Args, Parser, Subcommand, ValueEnum};
 
-use crate::repl::Repl;
+use crate::{commands::{self, HealthArgs, MetricsArgs, ToolsArgs, VersionArgs}, repl::Repl};
 
 #[derive(Debug, Parser)]
 #[command(name = "openclaw", version, about = "OpenClaw CLI")]
@@ -11,9 +11,20 @@ pub struct Cli {
 
 #[derive(Debug, Subcommand)]
 pub enum Commands {
+    /// Start interactive REPL
     Repl(ReplArgs),
+    /// Show system status
     Status(StatusArgs),
+    /// Run demo message
     Demo(DemoArgs),
+    /// List all available tools
+    Tools(ToolsArgs),
+    /// Show metrics
+    Metrics(MetricsArgs),
+    /// Show version info
+    Version(VersionArgs),
+    /// Run health check
+    Health(HealthArgs),
 }
 
 #[derive(Debug, Clone, Copy, ValueEnum, PartialEq)]
@@ -172,6 +183,22 @@ impl Cli {
                     args.provider = crate::config::merge_provider_args(args.provider, &cfg.provider);
                 }
                 Repl::new().run_demo(args).await
+            }
+            Commands::Tools(args) => {
+                commands::list_tools(args)?;
+                Ok(String::new())
+            }
+            Commands::Metrics(args) => {
+                commands::show_metrics(args)?;
+                Ok(String::new())
+            }
+            Commands::Version(args) => {
+                commands::show_version(args)?;
+                Ok(String::new())
+            }
+            Commands::Health(args) => {
+                commands::health_check(args)?;
+                Ok(String::new())
             }
         }
     }

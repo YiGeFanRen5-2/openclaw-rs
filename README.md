@@ -87,6 +87,24 @@ cargo bench --all
 
 See [BENCHMARKS.md](./BENCHMARKS.md) for detailed benchmark results and analysis.
 
+### Docker
+
+```bash
+# Build MCP server image
+docker build -f Dockerfile.mcp -t openclaw/mcp-server:latest .
+
+# Run MCP server
+docker run --rm openclaw/mcp-server:latest
+
+# Run with docker-compose
+docker compose up mcp-server
+
+# Development environment
+docker compose run --rm dev
+```
+
+See [Dockerfile.mcp](./Dockerfile.mcp) for the minimal MCP server image.
+
 ### Node.js 集成
 
 ```javascript
@@ -156,6 +174,7 @@ Or use the helper script:
 | [FFI.md](./FFI.md) | Node.js API reference |
 | [CLAUDE.md](./CLAUDE.md) | Claude Desktop integration |
 | [BENCHMARKS.md](./BENCHMARKS.md) | Performance benchmarks |
+| [PERFORMANCE.md](./PERFORMANCE.md) | Performance optimization guide |
 | [CONTRIBUTING.md](./CONTRIBUTING.md) | Developer guide |
 | [SECURITY.md](./SECURITY.md) | Security policy |
 
