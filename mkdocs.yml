@@ -1,0 +1,72 @@
+site_name: OpenClaw Rust Workspace
+site_description: Production-ready Rust implementation of the OpenClaw agent runtime
+site_author: OpenClaw Team
+site_url: https://YiGeFanRen5-2.github.io/openclaw-rs/
+
+repo_name: YiGeFanRen5-2/openclaw-rs
+repo_url: https://github.com/YiGeFanRen5-2/openclaw-rs
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.copy
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        rust:
+          docstring_style: rustdoc
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: guide/installation.md
+    - Quick Start: guide/getting-started.md
+    - Configuration: guide/configuration.md
+  - Guides:
+    - Providers: guide/providers.md
+    - Tools: guide/tools.md
+    - Plugins: guide/plugins.md
+    - Hot Reload: guide/hot-reload.md
+    - Persistence: guide/persistence.md
+  - API Reference:
+    - Runtime: api/runtime.md
+    - Tools: api/tools.md
+    - Provider: api/provider.md
+  - Development:
+    - Tool Development: TOOL_DEVELOPMENT.md
+    - Contributing: CONTRIBUTING.md
+  - Changelog: CHANGELOG.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
