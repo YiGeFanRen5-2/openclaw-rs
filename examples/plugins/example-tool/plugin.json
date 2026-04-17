@@ -1,0 +1,47 @@
+{
+  "id": "example-tool-plugin",
+  "name": "Example Tool Plugin",
+  "version": "1.0.0",
+  "description": "An example plugin demonstrating the plugin manifest format",
+  "author": "OpenClaw Team",
+  "hooks": [
+    {
+      "name": "before_tool_call",
+      "description": "Called before each tool execution"
+    },
+    {
+      "name": "after_message",
+      "description": "Called after receiving an LLM response"
+    }
+  ],
+  "tools": [
+    {
+      "name": "example_calculate",
+      "description": "Performs example calculations",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "operation": {
+            "type": "string",
+            "enum": ["add", "subtract", "multiply", "divide"]
+          },
+          "a": { "type": "number" },
+          "b": { "type": "number" }
+        },
+        "required": ["operation", "a", "b"]
+      }
+    }
+  ],
+  "resources": [
+    {
+      "name": "example://data",
+      "description": "Example data resource",
+      "mime_type": "application/json"
+    }
+  ],
+  "permissions": [
+    {
+      "type": "safe"
+    }
+  ]
+}

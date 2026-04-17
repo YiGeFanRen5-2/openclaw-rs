@@ -580,3 +580,6 @@ impl Plugin for LoggingPlugin {
 }
 
 pub mod hot;
+pub mod registry;
+
+pub use registry::{PluginRegistry, PluginRegistryEntry, PluginSource, RegistryError, CompatibilityIssue};

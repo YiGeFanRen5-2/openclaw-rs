@@ -161,6 +161,69 @@ Or use the helper script:
 
 ---
 
+## 🔌 Plugin Registry
+
+OpenClaw includes a plugin registry for discovering, validating, and managing plugins.
+
+### Features
+
+- **Semantic Versioning**: Full semver validation and compatibility checking
+- **Manifest Validation**: Automatic validation of `plugin.json` manifests
+- **Dependency Resolution**: Check OpenClaw version compatibility
+- **Hot Reload**: Plugins can be loaded/unloaded without restart
+
+### Plugin Manifest Format
+
+```json
+{
+  "id": "my-plugin",
+  "name": "My Plugin",
+  "version": "1.0.0",
+  "description": "A sample plugin",
+  "author": "Your Name",
+  "hooks": [
+    { "name": "before_tool_call" },
+    { "name": "after_message" }
+  ],
+  "tools": [
+    {
+      "name": "my_tool",
+      "description": "A custom tool",
+      "input_schema": { "type": "object" }
+    }
+  ],
+  "resources": [],
+  "permissions": []
+}
+```
+
+### Using the Registry
+
+```rust
+use openclaw_plugins::{PluginRegistry, PluginSource};
+
+// Create registry
+let mut registry = PluginRegistry::new();
+
+// Register from manifest
+registry.register(manifest, PluginSource::Local)?;
+
+// List plugins
+for entry in registry.list() {
+    println!("{} v{}", entry.manifest.name, entry.manifest.version);
+}
+
+// Export/Import
+let json = registry.export_json()?;
+registry.import_json(&json)?;
+```
+
+### Example Plugins
+
+See [examples/plugins/](examples/plugins/) for sample plugin manifests.
+
+---
+
 ## 📋 功能对等清单
 
 详见 [PARITY.md](./PARITY.md)
