@@ -437,6 +437,9 @@ pub fn register_builtin_tools(registry: &mut ToolRegistry) {
     // Health check tools
     registry.register(HealthCheckTool);
     registry.register(BatchHealthCheckTool);
+    // Validation tools
+    registry.register(ValidateJsonTool);
+    registry.register(ValidateToolInputTool);
 }
 
 /// List Files Tool
@@ -1066,6 +1069,10 @@ pub use image_tools::{ImageInfoTool, ImageFormatsTool};
 // ==================== Health Check Tools ====================
 mod health_tools;
 pub use health_tools::{HealthCheckTool, BatchHealthCheckTool};
+
+// ==================== Validation Tools ====================
+mod validator;
+pub use validator::{ValidateJsonTool, ValidateToolInputTool};
 
 // ==================== Phase 11: Benchmarks & Tests ====================
 
