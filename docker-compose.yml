@@ -1,0 +1,19 @@
+# docker-compose.yml for openclaw-rs CLI
+#
+# Usage:
+#   docker compose build
+#   docker compose run --rm status
+#   docker compose run --rm repl --provider mock
+#   docker compose run --rm demo --provider openai --api-key ${OPENCLAW_API_KEY} --model gpt-4o-mini --message 'hello'
+#
+services:
+  openclaw-cli:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Use environment variables for API keys etc.
+    environment:
+      - OPENCLAW_API_KEY=${OPENCLAW_API_KEY}
+      - OPENCLAW_BASE_URL=${OPENCLAW_BASE_URL}
+    # CLI args override entrypoint
+    command: ["status"]

@@ -1,0 +1,49 @@
+# Rust
+target/
+**/target/
+Cargo.lock
+.cargo/
+
+# Node
+node_modules/
+dist/
+*.log
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+tmp/
+temp/
+
+# Testing
+coverage/
+.nyc_output
+
+# Build outputs
+*.node
+*.so
+*.dylib
+*.dll
+# Criterion benchmarks
+target/criterion/
+
+# rust-analyzer
+rust-analyzer.json
+
+# Local docs build
+target/doc/
+
+# Release artifacts (keep source, not binaries)
+*.exe
+*.pdb

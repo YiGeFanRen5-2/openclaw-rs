@@ -1,0 +1,14 @@
+# OpenAI-compatible provider configuration example
+[provider]
+# provider kind: "openai" (requires api_key)
+type = "openai"
+api_key = "sk-..."  # set via env or here
+base_url = "https://api.openai.com/v1"
+no_plugin = false
+plugins = ["demo"]
+
+[repl]
+model = "gpt-4o-mini"
+prompt = "上一轮模型输出={{last_model_output}}；本轮工具输出={{last_tool_output}}"
+# orchestrator history window capacity (0 = unlimited)
+window_capacity = 10

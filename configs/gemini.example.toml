@@ -1,0 +1,17 @@
+# Gemini provider example
+# Copy to configs/gemini.toml and adjust
+
+provider = "gemini"
+model = "gemini-1.5-pro"
+
+# API key (or set GEMINI_API_KEY env var)
+# api_key = "AIzaSy..."
+
+# Base URL (optional, defaults to https://generativelanguage.googleapis.com)
+# base_url = "https://generativelanguage.googleapis.com"
+
+# Optional: plugins to enable (default: ["demo"])
+plugins = ["demo"]
+
+# Context window capacity (default: 10)
+window_capacity = 10

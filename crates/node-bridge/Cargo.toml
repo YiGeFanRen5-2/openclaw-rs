@@ -1,0 +1,22 @@
+[package]
+name = "openclaw-node-bridge"
+version.workspace = true
+edition.workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+napi = { version = "2.1", default-features = false, features = ["compat-mode", "serde"] }
+napi-derive = "2.1"
+anyhow = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.0", features = ["full"] }
+api-client = { path = "../api-client" }
+runtime = { path = "../runtime" }
+tools = { path = "../tools" }
+harness = { path = "../harness" }
+
+[build-dependencies]
+napi-build = "2.1"

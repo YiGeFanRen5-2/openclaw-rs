@@ -1,0 +1,27 @@
+[package]
+name = "openclaw-cli"
+version = "0.1.0"
+edition = "2021"
+description = "Interactive CLI for OpenClaw (REPL, markdown rendering)"
+
+[dependencies]
+api-client = { path = "../api-client" }
+runtime = { path = "../runtime" }
+tools = { path = "../tools" }
+openclaw-plugin = { path = "../plugin" }
+tokio = { version = "1", features = ["full"] }
+clap = { version = "4", features = ["derive"] }
+ratatui = "0.26"
+crossterm = "0.27"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+tracing = "0.1"
+async-trait = "0.1"
+tracing-subscriber = "0.3"
+anyhow = "1"
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+
+[dev-dependencies]
+tracing-subscriber = "0.3"
+tempfile = "3.10"

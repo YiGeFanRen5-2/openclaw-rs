@@ -1,0 +1,33 @@
+{
+  "name": "@openclaw/node-bridge",
+  "version": "0.1.0",
+  "description": "Node.js bridge for OpenClaw runtime",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "napi-build --target --release",
+    "build:debug": "napi-build",
+    "test": "node --test test/*.test.js",
+    "test:demo": "ts-node examples/simple-chat.ts"
+  },
+  "keywords": ["openclaw", "ai", "agent", "runtime", "bridge"],
+  "author": "OpenClaw Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@napi-rs/cli": "^2.18",
+    "@types/node": "^20",
+    "ts-node": "^10.9"
+  },
+  "peerDependencies": {
+    "@napi-rs/cli": "^2.18"
+  },
+  "optionalDependencies": {
+    "@openclaw/node-bridge-darwin-x64": "0.1.0",
+    "@openclaw/node-bridge-darwin-arm64": "0.1.0",
+    "@openclaw/node-bridge-linux-x64-gnu": "0.1.0",
+    "@openclaw/node-bridge-linux-x64-musl": "0.1.0",
+    "@openclaw/node-bridge-linux-arm64-gnu": "0.1.0",
+    "@openclaw/node-bridge-linux-arm64-musl": "0.1.0",
+    "@openclaw/node-bridge-win32-x64-msvc": "0.1.0"
+  }
+}

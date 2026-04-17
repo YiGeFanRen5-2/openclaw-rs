@@ -1,0 +1,31 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Source code
+*.rs text eol=lf
+*.toml text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sh text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+
+# Binary files
+*.so binary
+*.node binary
+*.a binary
+*.rlib binary
+*.d binary
+
+# Documentation
+*.png binary
+*.jpg binary
+*.gif binary
+*.webp binary
+*.svg binary
+*.pdf binary

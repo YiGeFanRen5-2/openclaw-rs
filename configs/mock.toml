@@ -1,0 +1,14 @@
+# Mock provider default configuration
+[provider]
+# provider kind: "mock" or "openai"
+type = "mock"
+# disable plugin hooks
+no_plugin = false
+# plugins to enable
+plugins = ["demo"]
+
+[repl]
+model = "mock-1"
+prompt = "上一轮模型输出={{last_model_output}}；本轮工具输出={{last_tool_output}}"
+# orchestrator history window capacity (0 = unlimited)
+window_capacity = 10

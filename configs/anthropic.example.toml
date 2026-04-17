@@ -1,0 +1,17 @@
+# Anthropic (Claude) provider example
+# Copy to configs/anthropic.toml and adjust
+
+provider = "anthropic"
+model = "claude-3-opus-20240229"
+
+# API key (or set ANTHROPIC_API_KEY env var)
+# api_key = "sk-ant-..."
+
+# Base URL (optional, defaults to https://api.anthropic.com)
+# base_url = "https://api.anthropic.com"
+
+# Optional: plugins to enable (default: ["demo"])
+plugins = ["demo"]
+
+# Context window capacity (default: 10)
+window_capacity = 10

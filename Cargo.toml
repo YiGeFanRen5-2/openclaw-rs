@@ -1,0 +1,37 @@
+[workspace]
+members = [
+    "crates/api-client",
+    "crates/runtime",
+    "crates/tools",
+    "crates/plugins",
+    "crates/ffi",
+    "crates/harness",
+    "crates/node-bridge",
+    "crates/mcp-server",
+    "crates/mcp-client",
+    "crates/openclaw-core",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+version = "0.1.0"
+license = "MIT"
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[workspace.dependencies]
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+napi = { version = "2", features = ["napi3"] }
+napi-derive = "2"
+uuid = { version = "1", features = ["v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+zstd = "0.13"

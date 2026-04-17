@@ -1,0 +1,119 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test:
+    name: Test Suite
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-action@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: "./crates -> target"
+
+      - name: Check formatting
+        run: cargo fmt --all -- --check
+
+      - name: Clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+
+      - name: Check all targets
+        run: cargo check --all
+
+      - name: Run tests
+        run: cargo test --all
+
+      - name: Build release
+        run: cargo build --release --all
+
+  benches:
+    name: Benchmarks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust
+        uses: dtolnay/rust-action@stable
+        with:
+          components: rustfmt
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: "./crates -> target"
+
+      - name: Run benchmarks
+        run: cargo bench --all --no-fail-fast
+
+      - name: Upload benchmark results
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          tool: 'cargo'
+          outputFilePath: 'target/criterion/'
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          auto-push: true
+          show-footer: false
+
+  mcp-integration:
+    name: MCP Integration Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust
+        uses: dtolnay/rust-action@stable
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+      - name: Build MCP server
+        run: cargo build --release -p mcp-server
+      - name: Build MCP client
+        run: cargo build --release -p mcp-client
+      - name: MCP server e2e tests
+        run: python3 scripts/mcp_server_e2e.py
+
+  docker:
+    name: Docker Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          load: true
+          tags: openclaw/mcp-server:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  docs:
+    name: Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust
+        uses: dtolnay/rust-action@stable
+      - name: Build docs
+        run: cargo doc --all --no-deps
+        continue-on-error: true
+      - name: Deploy docs
+        if: github.ref == 'refs/heads/master'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/doc
+          publish_branch: gh-pages
