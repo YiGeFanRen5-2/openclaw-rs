@@ -171,6 +171,7 @@ Or use the helper script:
 | Document | Description |
 |----------|-------------|
 | [QUICKSTART.md](./QUICKSTART.md) | Quick start guide |
+| [QUICKREF.md](./QUICKREF.md) | Quick reference commands |
 | [FFI.md](./FFI.md) | Node.js API reference |
 | [CLAUDE.md](./CLAUDE.md) | Claude Desktop integration |
 | [BENCHMARKS.md](./BENCHMARKS.md) | Performance benchmarks |
