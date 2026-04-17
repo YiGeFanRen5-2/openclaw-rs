@@ -224,6 +224,47 @@ See [examples/plugins/](examples/plugins/) for sample plugin manifests.
 
 ---
 
+## 📊 Observability & Monitoring
+
+OpenClaw includes a built-in metrics collector for observability.
+
+### Features
+
+- **Counters**: Track event occurrences (sessions created, tools called)
+- **Gauges**: Track current values (active sessions, memory usage)
+- **Histograms**: Track distributions (tool call duration, message size)
+- **Prometheus Export**: Export metrics in Prometheus format
+
+### Using Metrics
+
+```rust
+use openclaw_plugins::MetricsCollector;
+
+let metrics = MetricsCollector::new();
+
+// Record metrics
+metrics.increment_counter("requests_total", None);
+metrics.set_gauge("active_sessions", 42.0, None);
+metrics.record_duration("tool_call", Duration::from_millis(50));
+
+// Export
+let json = serde_json::to_string(&metrics.export_json())?;
+let prometheus = metrics.export_prometheus();
+```
+
+### Predefined Metrics
+
+| Metric | Type | Description |
+|--------|------|-------------|
+| `openclaw_sessions_created_total` | Counter | Total sessions created |
+| `openclaw_sessions_deleted_total` | Counter | Total sessions deleted |
+| `openclaw_messages_total` | Counter | Messages by direction |
+| `openclaw_tool_calls_total` | Counter | Tool calls by name/status |
+| `openclaw_tool_duration_seconds` | Histogram | Tool call duration |
+| `openclaw_compactions_total` | Counter | Session compactions |
+
+---
+
 ## 📋 功能对等清单
 
 详见 [PARITY.md](./PARITY.md)

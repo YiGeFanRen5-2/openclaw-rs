@@ -581,5 +581,7 @@ impl Plugin for LoggingPlugin {
 
 pub mod hot;
 pub mod registry;
+pub mod telemetry;
 
 pub use registry::{PluginRegistry, PluginRegistryEntry, PluginSource, RegistryError, CompatibilityIssue};
+pub use telemetry::MetricsCollector;
