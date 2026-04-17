@@ -107,10 +107,19 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install Rust
         uses: dtolnay/rust-action@stable
-      - name: Build docs
+      - name: Build Rust API docs
         run: cargo doc --all --no-deps
         continue-on-error: true
-      - name: Deploy docs
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install mkdocs
+        run: pip install mkdocs mkdocs-material
+      - name: Build mkdocs site
+        run: mkdocs build --strict
+        continue-on-error: true
+      - name: Deploy Rust API docs
         if: github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v3
         with:
