@@ -440,6 +440,10 @@ pub fn register_builtin_tools(registry: &mut ToolRegistry) {
     // Validation tools
     registry.register(ValidateJsonTool);
     registry.register(ValidateToolInputTool);
+    // JSON Store tools
+    registry.register(JsonStoreSetTool);
+    registry.register(JsonStoreGetTool);
+    registry.register(JsonStoreListTool);
 }
 
 /// List Files Tool
@@ -1073,6 +1077,10 @@ pub use health_tools::{HealthCheckTool, BatchHealthCheckTool};
 // ==================== Validation Tools ====================
 mod validator;
 pub use validator::{ValidateJsonTool, ValidateToolInputTool};
+
+// ==================== JSON Store Tools ====================
+mod json_store;
+pub use json_store::{JsonStoreSetTool, JsonStoreGetTool, JsonStoreListTool};
 
 // ==================== Phase 11: Benchmarks & Tests ====================
 
