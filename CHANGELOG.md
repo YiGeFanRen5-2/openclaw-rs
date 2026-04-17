@@ -102,3 +102,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - resources/list test  
   - prompts/list test
   - shutdown test
+
+## v0.2.2 (2026-04-17)
+
+### Added
+- `image_info` tool - Get image metadata (dimensions, format, size)
+- `image_formats` tool - List supported image formats
+- Supported formats: JPEG, PNG, GIF, BMP, WEBP
+- Pure Rust implementation, no heavy dependencies
