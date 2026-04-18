@@ -100,4 +100,4 @@ let loaded = store.load("my-session")?;
 
 ---
 
-下一步：[API 参考](api/runtime.md)
+下一步：[API 参考](../api/runtime.md)

@@ -115,4 +115,4 @@ openclaw repl --resume <session-id>
 
 ---
 
-遇到问题？查看 [故障排除](installation.md#故障排除) 或 [提交 Issue](https://github.com/openclaw/openclaw/issues)。
+遇到问题？查看 [故障排除](installation.md) 或 [提交 Issue](https://github.com/openclaw/openclaw/issues)。

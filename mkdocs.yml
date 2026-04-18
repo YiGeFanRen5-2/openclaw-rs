@@ -32,31 +32,29 @@ theme:
 
 plugins:
   - search
-  - mkdocstrings:
-      handlers:
-        rust:
-          docstring_style: rustdoc
 
 nav:
   - Home: index.md
   - Getting Started:
-    - Installation: guide/installation.md
-    - Quick Start: guide/getting-started.md
-    - Configuration: guide/configuration.md
+    - Installation: getting-started/installation.md
+    - First Project: getting-started/first-project.md
+    - Configuration: getting-started/configuration.md
   - Guides:
     - Providers: guide/providers.md
     - Tools: guide/tools.md
     - Plugins: guide/plugins.md
     - Hot Reload: guide/hot-reload.md
     - Persistence: guide/persistence.md
+    - Advanced:
+      - Session Management: guides/advanced/session-management.md
+      - Plugin Development: guides/advanced/plugin-development.md
+      - Custom Tools: guides/advanced/custom-tools.md
   - API Reference:
     - Runtime: api/runtime.md
     - Tools: api/tools.md
     - Provider: api/provider.md
   - Development:
     - Tool Development: TOOL_DEVELOPMENT.md
-    - Contributing: CONTRIBUTING.md
-  - Changelog: CHANGELOG.md
 
 markdown_extensions:
   - pymdownx.highlight:
