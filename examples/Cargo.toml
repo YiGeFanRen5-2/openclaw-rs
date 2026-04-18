@@ -23,10 +23,15 @@ path = "example_09_batch_processor.rs"
 name = "example_10_mcp_server"
 path = "example_10_mcp_server.rs"
 
+[[example]]
+name = "example_11_i18n"
+path = "example_11_i18n.rs"
+
 [dependencies]
 runtime = { path = "../crates/runtime" }
 tools = { path = "../crates/tools" }
 plugins = { path = "../crates/plugins" }
+openclaw-i18n = { path = "../crates/i18n" }
 
 tokio.workspace = true
 serde.workspace = true

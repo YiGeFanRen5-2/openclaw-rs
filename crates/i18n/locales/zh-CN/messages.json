@@ -1,0 +1,65 @@
+{
+  "app": {
+    "name": "OpenClaw",
+    "tagline": "您的 AI 原生桌面助手"
+  },
+  "greeting": {
+    "morning": "早上好！",
+    "afternoon": "下午好！",
+    "evening": "晚上好！",
+    "night": "晚安！"
+  },
+  "common": {
+    "ok": "确定",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "close": "关闭",
+    "error": "错误",
+    "success": "成功",
+    "loading": "加载中...",
+    "retry": "重试"
+  },
+  "errors": {
+    "not_found": "未找到",
+    "unauthorized": "未授权",
+    "forbidden": "禁止访问",
+    "timeout": "请求超时",
+    "network": "网络错误",
+    "unknown": "发生未知错误"
+  },
+  "time": {
+    "now": "刚刚",
+    "minutes_ago": "{count} 分钟前",
+    "hours_ago": "{count} 小时前",
+    "days_ago": "{count} 天前",
+    "seconds_ago": "{count} 秒前"
+  },
+  "files": {
+    "item": {
+      "other": "{count} 个文件"
+    },
+    "folder": {
+      "other": "{count} 个文件夹"
+    },
+    "uploaded": "已上传 {name}",
+    "deleted": "已删除 {name}",
+    "renamed": "已重命名为 {name}"
+  },
+  "plugin": {
+    "enabled": "插件已启用",
+    "disabled": "插件已禁用",
+    "install": "安装插件",
+    "uninstall": "卸载插件",
+    "settings": "插件设置"
+  },
+  "settings": {
+    "title": "设置",
+    "language": "语言",
+    "theme": "主题",
+    "theme_light": "浅色",
+    "theme_dark": "深色",
+    "theme_auto": "跟随系统"
+  }
+}

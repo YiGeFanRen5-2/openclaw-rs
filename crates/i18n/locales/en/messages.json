@@ -1,0 +1,67 @@
+{
+  "app": {
+    "name": "OpenClaw",
+    "tagline": "Your AI-native desktop assistant"
+  },
+  "greeting": {
+    "morning": "Good morning!",
+    "afternoon": "Good afternoon!",
+    "evening": "Good evening!",
+    "night": "Good night!"
+  },
+  "common": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "error": "Error",
+    "success": "Success",
+    "loading": "Loading...",
+    "retry": "Retry"
+  },
+  "errors": {
+    "not_found": "Not found",
+    "unauthorized": "Unauthorized",
+    "forbidden": "Forbidden",
+    "timeout": "Request timed out",
+    "network": "Network error",
+    "unknown": "An unknown error occurred"
+  },
+  "time": {
+    "now": "just now",
+    "minutes_ago": "{count} minutes ago",
+    "hours_ago": "{count} hours ago",
+    "days_ago": "{count} days ago",
+    "seconds_ago": "{count} seconds ago"
+  },
+  "files": {
+    "item": {
+      "one": "{count} file",
+      "other": "{count} files"
+    },
+    "folder": {
+      "one": "{count} folder",
+      "other": "{count} folders"
+    },
+    "uploaded": "Uploaded {name}",
+    "deleted": "Deleted {name}",
+    "renamed": "Renamed to {name}"
+  },
+  "plugin": {
+    "enabled": "Plugin enabled",
+    "disabled": "Plugin disabled",
+    "install": "Install plugin",
+    "uninstall": "Uninstall plugin",
+    "settings": "Plugin settings"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "theme_light": "Light",
+    "theme_dark": "Dark",
+    "theme_auto": "Auto"
+  }
+}

@@ -4,6 +4,7 @@ members = [
     "crates/runtime",
     "crates/tools",
     "crates/plugins",
+    "crates/i18n",
     "crates/ffi",
     "crates/harness",
     "crates/node-bridge",
