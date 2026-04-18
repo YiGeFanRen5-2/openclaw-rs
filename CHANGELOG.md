@@ -4,11 +4,43 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.4.0] - 2026-04-18
+
+### Added
+
+#### Phase 50: API Docs & Quick Reference
+- Comprehensive API documentation in `docs/`
+- Quick reference guide for common operations
+- Updated README with better examples
+
+#### Phase 51: Integration Test Framework & Benchmarks
+- `tests/` directory with integration tests
+- Benchmark suite for performance tracking
+- CI/CD integration for test automation
+
+#### Phase 52: API Versioning & Stability Guarantees
+- API stability guarantees documented in `API_STABILITY.md`
+- Version compatibility policy
+- Breaking change notification process
+
+#### Phase 53: Enhanced Documentation Site with Tutorials
+- `site/` directory with full documentation site
+- Tutorial section with step-by-step guides
+- Enhanced navigation and search
+
+#### Phase 54: Additional Example Projects
+- More `examples/` demonstrating various use cases
+- Example plugins and configurations
+- Best practices documentation
+
+### Changed
+
+- Documentation structure reorganized for clarity
+- `.gitignore` updated with `site/` exclusion
 
 ---
 
-## [0.2.0] - 2026-04-16
+## [0.3.0] - 2026-04-16
 
 ### Added
 

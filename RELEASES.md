@@ -1,5 +1,89 @@
 # OpenClaw Rust Upgrade - Release Notes
 
+## Version 0.4.0 (Phase 50-54 Complete) - 2026-04-18
+
+### 🎉 Documentation & Polish Release
+
+This release focuses on comprehensive documentation, API stability guarantees, integration testing framework, and enhanced example projects.
+
+#### New Features
+
+**Phase 50: API Docs & Quick Reference**
+- Comprehensive API documentation in `docs/`
+- Quick reference guide for common operations
+- Updated README with better examples
+
+**Phase 51: Integration Test Framework & Benchmarks**
+- `tests/` directory with integration tests
+- Benchmark suite for performance tracking
+- CI/CD integration for test automation
+
+**Phase 52: API Versioning & Stability Guarantees**
+- API stability guarantees documented in `API_STABILITY.md`
+- Version compatibility policy
+- Breaking change notification process
+
+**Phase 53: Enhanced Documentation Site with Tutorials**
+- `site/` directory with full documentation site
+- Tutorial section with step-by-step guides
+- Enhanced navigation and search
+
+**Phase 54: Additional Example Projects**
+- More `examples/` demonstrating various use cases
+- Example plugins and configurations
+- Best practices documentation
+
+#### Architecture
+
+```
+13 crates | 77+ tests | comprehensive documentation
+```
+
+#### Breaking Changes
+
+None - this release adds documentation and tooling only.
+
+#### Migration from 0.3.0
+
+No breaking API changes. This release is purely additive.
+
+---
+
+## Version 0.3.0 (Phase 33-46 Complete) - 2026-04-17
+
+### 🎉 Feature-Rich Release
+
+### What's Changed
+
+**New Tools (19 built-in)**
+- `health_check`, `batch_health_check` - URL health monitoring
+- `validate_json`, `validate_tool_input` - JSON Schema validation
+- `json_store_set/get/list` - JSON key-value store
+- `hash`, `uuid`, `random_string`, `text_stats` - Text utilities
+- `image_info`, `image_formats` - Image metadata
+
+**Plugin System**
+- `PluginRegistry` - discovery and validation
+- Semantic version compatibility checking
+- Manifest-based tool/resource definitions
+
+**Observability**
+- `MetricsCollector` - OpenTelemetry-style metrics
+- Prometheus format export
+- Counters, Gauges, Histograms
+
+**Docker & Deployment**
+- `Dockerfile.mcp` - minimal MCP server image
+- `Dockerfile.dev` - development environment
+- Enhanced docker-compose.yml
+
+**Documentation**
+- SECURITY.md - security policy
+- CLAUDE.md - Claude Code integration
+- PERFORMANCE.md - optimization guide
+
+---
+
 ## Version 0.1.0 (Phase 2 Complete) - 2026-04-06
 
 ### 🎉 Phase 2 完成！
