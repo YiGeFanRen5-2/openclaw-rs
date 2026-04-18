@@ -1,7 +1,8 @@
 [package]
-name = "api-client"
+name = "openclaw-integration-tests"
 version.workspace = true
 edition.workspace = true
+license.workspace = true
 
 [dependencies]
 tokio.workspace = true
@@ -9,15 +10,18 @@ serde.workspace = true
 serde_json.workspace = true
 thiserror.workspace = true
 tracing.workspace = true
-reqwest = { version = "0.11", features = ["json", "stream"] }
-futures-util = "0.3"
+tracing-subscriber.workspace = true
 uuid.workspace = true
 chrono.workspace = true
-async-trait = "0.1.89"
+futures.workspace = true
 
 [dev-dependencies]
 criterion = "0.4"
 
 [[bench]]
-name = "chat_bench"
+name = "session_bench"
+harness = false
+
+[[bench]]
+name = "tool_bench"
 harness = false

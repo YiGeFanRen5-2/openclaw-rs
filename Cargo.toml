@@ -10,6 +10,7 @@ members = [
     "crates/mcp-server",
     "crates/mcp-client",
     "crates/openclaw-core",
+    "tests",
 ]
 resolver = "2"
 
@@ -35,3 +36,5 @@ napi-derive = "2"
 uuid = { version = "1", features = ["v4"] }
 chrono = { version = "0.4", features = ["serde"] }
 zstd = "0.13"
+futures = "0.3"
+criterion = "0.4"
