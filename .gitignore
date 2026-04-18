@@ -47,3 +47,4 @@ target/doc/
 # Release artifacts (keep source, not binaries)
 *.exe
 *.pdb
+site/
