@@ -11,8 +11,10 @@ members = [
     "crates/mcp-client",
     "crates/openclaw-core",
     "tests",
+    "examples",
 ]
 resolver = "2"
+
 
 [workspace.package]
 edition = "2021"
@@ -38,3 +40,5 @@ chrono = { version = "0.4", features = ["serde"] }
 zstd = "0.13"
 futures = "0.3"
 criterion = "0.4"
+anyhow = "1"
+async-trait = "0.1"
